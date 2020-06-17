@@ -32,6 +32,25 @@
         /// </summary>
         public static string VendorsRoleName => "Vendors";
 
+        /// <summary>
+        /// Gets a system name of 'Clients' customer role
+        /// </summary>
+        public static string ClientsRoleName => "Clients";
+
+        /// <summary>
+        /// Gets a system name of 'Barbers' customer role
+        /// </summary>
+        public static string BarbersRoleName => "Barbers";
+
+        /// <summary>
+        /// Gets a system name of 'Salon Managers' customer role
+        /// </summary>
+        public static string SalonManagersRoleName => "SalonManagers";
+
+        /// <summary>
+        /// Gets a system name of 'Company Directors' customer role
+        /// </summary>
+        public static string CompanyDirectorsRoleName => "CompanyDirectors";
         #endregion
 
         #region System customers
