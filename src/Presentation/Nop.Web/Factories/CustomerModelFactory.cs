@@ -471,7 +471,12 @@ namespace Nop.Web.Factories
 
             model.AllowCustomersToSetTimeZone = _dateTimeSettings.AllowCustomersToSetTimeZone;
             foreach (var tzi in _dateTimeHelper.GetSystemTimeZones())
-                model.AvailableTimeZones.Add(new SelectListItem { Text = tzi.DisplayName, Value = tzi.Id, Selected = (excludeProperties ? tzi.Id == model.TimeZoneId : tzi.Id == _dateTimeHelper.CurrentTimeZone.Id) });
+                model.AvailableTimeZones.Add(new SelectListItem
+                {
+                    Text = tzi.DisplayName, 
+                    Value = tzi.Id, 
+                    Selected = (excludeProperties ? tzi.Id == model.TimeZoneId : tzi.Id == _dateTimeHelper.CurrentTimeZone.Id)
+                });
 
             model.DisplayVatNumber = _taxSettings.EuVatEnabled;
             //form fields

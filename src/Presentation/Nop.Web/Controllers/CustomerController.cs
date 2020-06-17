@@ -744,6 +744,7 @@ namespace Nop.Web.Controllers
                 }
 
                 var isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.Standard;
+
                 var registrationRequest = new CustomerRegistrationRequest(customer,
                     model.Email,
                     _customerSettings.UsernamesEnabled ? model.Username : model.Email,

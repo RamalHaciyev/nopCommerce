@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Nop.Core.Configuration;
 using Nop.Core.Infrastructure;
 using Nop.Web.Framework.Infrastructure.Extensions;
@@ -45,17 +46,29 @@ namespace Nop.Web
         public void ConfigureContainer(ContainerBuilder builder)
         {
             _engine.RegisterDependencies(builder, _nopConfig);
+
+            
         }
 
         /// <summary>
         /// Configure the application HTTP request pipeline
         /// </summary>
         /// <param name="application">Builder for configuring an application's request pipeline</param>
-        public void Configure(IApplicationBuilder application)
+        /// <param name="environment"></param>
+        public void Configure(IApplicationBuilder application, IWebHostEnvironment environment)
         {
-            application.ConfigureRequestPipeline();
+            if (environment.IsDevelopment())
+            {
+                application.UseDeveloperExceptionPage();
+                application.UseBrowserLink();
+            }
 
+            application.UseStaticFiles();
+            application.ConfigureRequestPipeline();
             application.StartEngine();
+
+           
+
         }
     }
 }
