@@ -58,58 +58,58 @@
     <Value>Seçilmişləri silin</Value>
   </LocaleResource>
   <LocaleResource Name="Account.BackInStockSubscriptions.Description">
-    <Value>You will receive an e-mail when a particular product is back in stock.</Value>
+    <Value>Müəyyən bir məhsul stokda olduqda e-poçt ünvanınıza bildiriş alacaqsınız.</Value>
   </LocaleResource>
   <LocaleResource Name="Account.BackInStockSubscriptions.NoSubscriptions">
     <Value>You are not currently subscribed to any Back In Stock notification lists</Value>
   </LocaleResource>
   <LocaleResource Name="Account.BackInStockSubscriptions.ProductColumn">
-    <Value>Product</Value>
+    <Value>Məhsul</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword">
-    <Value>Change password</Value>
+    <Value>Şifrənin dəyişdirilməsi</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Button">
-    <Value>Change password</Value>
+    <Value>Şifrəni dəyişdirin</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.EmailIsNotProvided">
-    <Value>Email is not entered</Value>
+    <Value>E-poçt daxil edilməyib</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.EmailNotFound">
-    <Value>The specified email could not be found</Value>
+    <Value>Göstərilən e-poçt tapılmadı</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.OldPasswordDoesntMatch">
-    <Value>Old password doesn't match</Value>
+    <Value>Köhnə şifrə uyğun gəlmir</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.PasswordIsNotProvided">
-    <Value>Password is not entered</Value>
+    <Value>Şifrə daxil deyilməyib</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.PasswordMatchesWithPrevious">
-    <Value>You entered the password that is the same as one of the last passwords you used. Please create a new password.</Value>
+    <Value>İstifadə etdiyiniz son şifrələrdən biri ilə eyni olan şifrəni daxil etdiniz. Zəhmət olmazsa yeni bir şifrə yaradın.</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.ConfirmNewPassword">
-    <Value>Confirm password</Value>
+    <Value>Yeni şifrəni təsdiqləyin</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.ConfirmNewPassword.Required">
-    <Value>Password is required.</Value>
+    <Value>Şifrə tələb olunur.</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.NewPassword">
-    <Value>New password</Value>
+    <Value>Yeni şifrə</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.NewPassword.EnteredPasswordsDoNotMatch">
-    <Value>The new password and confirmation password do not match.</Value>
+    <Value>Yeni şifrə və təsdiq şifrəsi uyğun gəlmir.</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.OldPassword">
-    <Value>Old password</Value>
+    <Value>Köhnə şifrə</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Fields.OldPassword.Required">
-    <Value>Old password is required.</Value>
+    <Value>Köhnə şifrə tələb olunur.</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.PasswordIsExpired">
-    <Value>Your password has expired, please create a new one</Value>
+    <Value>Şifrənizin müddəti başa çatdı, lütfən yenisini yaradın</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Success">
-    <Value>Password was changed</Value>
+    <Value>Şifrə dəyişdirildi</Value>
   </LocaleResource>
   <LocaleResource Name="Account.CheckUsernameAvailability.Available">
     <Value>Username available</Value>
@@ -544,10 +544,10 @@
     <Value>Log out</Value>
   </LocaleResource>
   <LocaleResource Name="Account.MyAccount">
-    <Value>My account</Value>
+    <Value>Mənim Hesabım</Value>
   </LocaleResource>
   <LocaleResource Name="Account.Navigation">
-    <Value>My account</Value>
+    <Value>Mənim Hesabım</Value>
   </LocaleResource>
   <LocaleResource Name="Account.Options">
     <Value>Options</Value>
