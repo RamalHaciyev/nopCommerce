@@ -369,13 +369,13 @@ namespace Nop.Services.Installation
             {
                 new Store
                 {
-                    Name = "Your store name",
+                    Name = "Beauty.az",
                     Url = storeUrl,
                     SslEnabled = _webHelper.IsCurrentConnectionSecured(),
-                    Hosts = "yourstore.com,www.yourstore.com",
+                    Hosts = "beauty.az,www.beauty.az",
                     DisplayOrder = 1,
                     //should we set some default company info?
-                    CompanyName = "Your company name",
+                    CompanyName = "Beauty",
                     CompanyAddress = "your company country, state, zip, street, etc",
                     CompanyPhoneNumber = "(123) 456-78901",
                     CompanyVat = null
@@ -4459,46 +4459,87 @@ namespace Nop.Services.Installation
         {
             var crAdministrators = new CustomerRole
             {
-                Name = "Administrators",
+                Name = "Administratorlar",
                 Active = true,
                 IsSystemRole = true,
                 SystemName = NopCustomerDefaults.AdministratorsRoleName
             };
             var crForumModerators = new CustomerRole
             {
-                Name = "Forum Moderators",
+                Name = "Forum Moderatorları",
                 Active = true,
                 IsSystemRole = true,
                 SystemName = NopCustomerDefaults.ForumModeratorsRoleName
             };
             var crRegistered = new CustomerRole
             {
-                Name = "Registered",
+                Name = "Qeydiyyatlı",
                 Active = true,
                 IsSystemRole = true,
                 SystemName = NopCustomerDefaults.RegisteredRoleName
             };
             var crGuests = new CustomerRole
             {
-                Name = "Guests",
+                Name = "Qonaqlar",
                 Active = true,
                 IsSystemRole = true,
                 SystemName = NopCustomerDefaults.GuestsRoleName
             };
             var crVendors = new CustomerRole
             {
-                Name = "Vendors",
+                Name = "Satıcılar",
                 Active = true,
                 IsSystemRole = true,
                 SystemName = NopCustomerDefaults.VendorsRoleName
             };
+
+            var crClients = new CustomerRole
+            {
+                Name = "Müştərilər",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = NopCustomerDefaults.ClientsRoleName
+
+            };
+
+            var crBarbers = new CustomerRole
+            {
+
+                Name = "Ustalar",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = NopCustomerDefaults.BarbersRoleName
+
+            };
+
+            var crSalonManagers = new CustomerRole
+            {
+                Name = "Salon sahibləri",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = NopCustomerDefaults.SalonManagersRoleName
+
+            };
+
+            var crCompanyDirectors = new CustomerRole
+            {
+                Name = "Şirkət sahibləri",
+                Active = true,
+                IsSystemRole = true,
+                SystemName = NopCustomerDefaults.CompanyDirectorsRoleName
+            };
+
             var customerRoles = new List<CustomerRole>
             {
                 crAdministrators,
                 crForumModerators,
                 crRegistered,
                 crGuests,
-                crVendors
+                crVendors,
+                crClients,
+                crBarbers,
+                crSalonManagers,
+                crCompanyDirectors
             };
             _customerRoleRepository.Insert(customerRoles);
 
@@ -4525,18 +4566,17 @@ namespace Nop.Services.Installation
             var defaultAdminUserAddress = InsertInstallationData(
                 new Address
                 {
-                    FirstName = "John",
-                    LastName = "Smith",
-                    PhoneNumber = "12345678",
+                    FirstName = "Sənan",
+                    LastName = "Həsənquliyev",
+                    PhoneNumber = "+994551112233",
                     Email = defaultUserEmail,
                     FaxNumber = string.Empty,
-                    Company = "Nop Solutions Ltd",
-                    Address1 = "21 West 52nd Street",
+                    Company = "Beauty Store",
+                    Address1 = "Ünvan...",
                     Address2 = string.Empty,
-                    City = "New York",
-                    StateProvinceId = _stateProvinceRepository.Table.FirstOrDefault(sp => sp.Name == "New York")?.Id,
-                    CountryId = _countryRepository.Table.FirstOrDefault(c => c.ThreeLetterIsoCode == "USA")?.Id,
-                    ZipPostalCode = "10021",
+                    City = "Bakı",
+                    CountryId = _countryRepository.Table.FirstOrDefault(c => c.ThreeLetterIsoCode == "Azerbaijan")?.Id,
+                    ZipPostalCode = "AZ1000",
                     CreatedOnUtc = DateTime.UtcNow
                 });
 
@@ -4545,7 +4585,10 @@ namespace Nop.Services.Installation
 
             _customerRepository.Insert(adminUser);
 
-            InsertInstallationData(new CustomerAddressMapping { CustomerId = adminUser.Id, AddressId = defaultAdminUserAddress.Id });
+            InsertInstallationData(new CustomerAddressMapping
+            {
+                CustomerId = adminUser.Id, AddressId = defaultAdminUserAddress.Id
+            });
 
             InsertInstallationData(
                 new CustomerCustomerRoleMapping { CustomerId = adminUser.Id, CustomerRoleId = crAdministrators.Id },
@@ -4553,8 +4596,8 @@ namespace Nop.Services.Installation
                 new CustomerCustomerRoleMapping { CustomerId = adminUser.Id, CustomerRoleId = crRegistered.Id });
 
             //set default customer name
-            _genericAttributeService.SaveAttribute(adminUser, NopCustomerDefaults.FirstNameAttribute, "John");
-            _genericAttributeService.SaveAttribute(adminUser, NopCustomerDefaults.LastNameAttribute, "Smith");
+            _genericAttributeService.SaveAttribute(adminUser, NopCustomerDefaults.FirstNameAttribute, "Sənan");
+            _genericAttributeService.SaveAttribute(adminUser, NopCustomerDefaults.LastNameAttribute, "Həsənquliyev");
 
             //set hashed admin password
             var customerRegistrationService = EngineContext.Current.Resolve<ICustomerRegistrationService>();
@@ -5499,8 +5542,8 @@ namespace Nop.Services.Installation
             {
                 new EmailAccount
                 {
-                    Email = "test@mail.com",
-                    DisplayName = "Store name",
+                    Email = "info@beauty.az",
+                    DisplayName = "Beauty Store",
                     Host = "smtp.mail.com",
                     Port = 25,
                     Username = "123",
@@ -5516,7 +5559,7 @@ namespace Nop.Services.Installation
         {
             var eaGeneral = _emailAccountRepository.Table.FirstOrDefault();
             if (eaGeneral == null)
-                throw new Exception("Default email account cannot be loaded");
+                throw new Exception("Defolt e-poçt hesabı yüklənə bilməz");
 
             var messageTemplates = new List<MessageTemplate>
             {
@@ -5917,7 +5960,7 @@ namespace Nop.Services.Installation
                     IncludeInFooterColumn1 = true,
                     DisplayOrder = 20,
                     Published = true,
-                    Title = "About us",
+                    Title = "Bizim haqqımızda",
                     Body =
                         "<p>Put your &quot;About Us&quot; information here. You can edit this in the admin site.</p>",
                     TopicTemplateId = defaultTopicTemplate.Id
@@ -6121,10 +6164,13 @@ namespace Nop.Services.Installation
                 PopupForTermsOfServiceLinks = true,
                 JqueryMigrateScriptLoggingActive = false,
                 SupportPreviousNopcommerceVersions = true,
-                UseResponseCompression = true,
                 StaticFilesCacheControl = "public,max-age=31536000",
                 FaviconAndAppIconsHeadCode = "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/icons/icons_0/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/icons/icons_0/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/icons/icons_0/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/icons/icons_0/favicon-16x16.png\"><link rel=\"manifest\" href=\"/icons/icons_0/site.webmanifest\"><link rel=\"mask-icon\" href=\"/icons/icons_0/safari-pinned-tab.svg\" color=\"#5bbad5\"><link rel=\"shortcut icon\" href=\"/icons/icons_0/favicon.ico\"><meta name=\"msapplication-TileColor\" content=\"#2d89ef\"><meta name=\"msapplication-TileImage\" content=\"/icons/icons_0/mstile-144x144.png\"><meta name=\"msapplication-config\" content=\"/icons/icons_0/browserconfig.xml\"><meta name=\"theme-color\" content=\"#ffffff\">",
-                EnableHtmlMinification = true,
+
+                // Disable for Browserlink/Browsersync
+                UseResponseCompression = false,
+                EnableHtmlMinification = false,
+
                 //we disable bundling out of the box because it requires a lot of server resources
                 EnableJsBundling = false,
                 EnableCssBundling = false,
@@ -6133,9 +6179,9 @@ namespace Nop.Services.Installation
 
             settingService.SaveSetting(new SeoSettings
             {
-                PageTitleSeparator = ". ",
+                PageTitleSeparator = " | ",
                 PageTitleSeoAdjustment = PageTitleSeoAdjustment.PagenameAfterStorename,
-                DefaultTitle = "Your store",
+                DefaultTitle = "Beauty.az",
                 DefaultMetaKeywords = string.Empty,
                 DefaultMetaDescription = string.Empty,
                 GenerateProductMetaDescription = true,
@@ -6323,7 +6369,7 @@ namespace Nop.Services.Installation
             settingService.SaveSetting(new LocalizationSettings
             {
                 DefaultAdminLanguageId = _languageRepository.Table.Single(l => l.Name == "English").Id,
-                UseImagesForLanguageSelection = false,
+                UseImagesForLanguageSelection = true,
                 SeoFriendlyUrlsForLanguagesEnabled = false,
                 AutomaticallyDetectLanguage = false,
                 LoadAllLocaleRecordsOnStartup = true,
@@ -6347,29 +6393,29 @@ namespace Nop.Services.Installation
                 UnduplicatedPasswordsNumber = 4,
                 PasswordRecoveryLinkDaysValid = 7,
                 PasswordLifetime = 90,
-                FailedPasswordAllowedAttempts = 0,
+                FailedPasswordAllowedAttempts = 10,
                 FailedPasswordLockoutMinutes = 30,
                 UserRegistrationType = UserRegistrationType.Standard,
-                AllowCustomersToUploadAvatars = false,
+                AllowCustomersToUploadAvatars = true,
                 AvatarMaximumSizeBytes = 20000,
                 DefaultAvatarEnabled = true,
                 ShowCustomersLocation = false,
-                ShowCustomersJoinDate = false,
-                AllowViewingProfiles = false,
-                NotifyNewCustomerRegistration = false,
+                ShowCustomersJoinDate = true,
+                AllowViewingProfiles = true,
+                NotifyNewCustomerRegistration = true,
                 HideDownloadableProductsTab = false,
                 HideBackInStockSubscriptionsTab = false,
                 DownloadableProductsValidateUser = false,
-                CustomerNameFormat = CustomerNameFormat.ShowFirstName,
+                CustomerNameFormat = CustomerNameFormat.ShowFullNames,
                 FirstNameEnabled = true,
                 FirstNameRequired = true,
                 LastNameEnabled = true,
                 LastNameRequired = true,
                 GenderEnabled = true,
-                DateOfBirthEnabled = true,
+                DateOfBirthEnabled = false,
                 DateOfBirthRequired = false,
                 DateOfBirthMinimumAge = null,
-                CompanyEnabled = true,
+                CompanyEnabled = false,
                 StreetAddressEnabled = false,
                 StreetAddress2Enabled = false,
                 ZipPostalCodeEnabled = false,
@@ -6382,9 +6428,9 @@ namespace Nop.Services.Installation
                 StateProvinceRequired = false,
                 PhoneEnabled = false,
                 FaxEnabled = false,
-                AcceptPrivacyPolicyEnabled = false,
-                NewsletterEnabled = true,
-                NewsletterTickedByDefault = true,
+                AcceptPrivacyPolicyEnabled = true,
+                NewsletterEnabled = false,
+                NewsletterTickedByDefault = false,
                 HideNewsletterBlock = false,
                 NewsletterBlockAllowToUnsubscribe = false,
                 OnlineCustomerMinutes = 20,
@@ -6417,7 +6463,7 @@ namespace Nop.Services.Installation
                 StateProvinceEnabled = true,
                 PhoneEnabled = true,
                 PhoneRequired = true,
-                FaxEnabled = true
+                FaxEnabled = false
             });
 
             settingService.SaveSetting(new MediaSettings
@@ -6435,7 +6481,7 @@ namespace Nop.Services.Installation
                 AutoCompleteSearchThumbPictureSize = 20,
                 ImageSquarePictureSize = 32,
                 MaximumImageSize = 1980,
-                DefaultPictureZoomEnabled = false,
+                DefaultPictureZoomEnabled = true,
                 DefaultImageQuality = 80,
                 MultipleThumbDirectories = false,
                 ImportProductImagesUsingHash = true,
@@ -6446,14 +6492,12 @@ namespace Nop.Services.Installation
             settingService.SaveSetting(new StoreInformationSettings
             {
                 StoreClosed = false,
-                DefaultStoreTheme = "DefaultClean",
+                DefaultStoreTheme = "BeautyStore",
                 AllowCustomerToSelectTheme = false,
                 DisplayMiniProfilerInPublicStore = false,
                 DisplayMiniProfilerForAdminOnly = false,
-                DisplayEuCookieLawWarning = false,
-                FacebookLink = "https://www.facebook.com/nopCommerce",
-                TwitterLink = "https://twitter.com/nopCommerce",
-                YoutubeLink = "https://www.youtube.com/user/nopCommerce",
+                DisplayEuCookieLawWarning = true,
+                FacebookLink = "https://www.facebook.com/beauty.az",
                 HidePoweredByNopCommerce = false
             });
 
@@ -6674,7 +6718,7 @@ namespace Nop.Services.Installation
 
             settingService.SaveSetting(new ForumSettings
             {
-                ForumsEnabled = false,
+                ForumsEnabled = true,
                 RelativeDateTimeFormattingEnabled = true,
                 AllowCustomersToDeletePosts = false,
                 AllowCustomersToEditPosts = false,
@@ -6684,7 +6728,7 @@ namespace Nop.Services.Installation
                 AllowPostVoting = true,
                 MaxVotesPerDay = 30,
                 TopicSubjectMaxLength = 450,
-                PostMaxLength = 4000,
+                PostMaxLength = 5000,
                 StrippedTopicMaxLength = 45,
                 TopicsPageSize = 10,
                 PostsPageSize = 10,
@@ -6694,13 +6738,13 @@ namespace Nop.Services.Installation
                 ShowCustomersPostCount = true,
                 ForumEditor = EditorType.BBCodeEditor,
                 SignaturesEnabled = true,
-                AllowPrivateMessages = false,
-                ShowAlertForPM = false,
+                AllowPrivateMessages = true,
+                ShowAlertForPM = true,
                 PrivateMessagesPageSize = 10,
                 ForumSubscriptionsPageSize = 10,
-                NotifyAboutPrivateMessages = false,
+                NotifyAboutPrivateMessages = true,
                 PMSubjectMaxLength = 450,
-                PMTextMaxLength = 4000,
+                PMTextMaxLength = 5000,
                 HomepageActiveDiscussionsTopicCount = 5,
                 ActiveDiscussionsFeedEnabled = false,
                 ActiveDiscussionsFeedCount = 25,
@@ -6726,6 +6770,7 @@ namespace Nop.Services.Installation
             var eaGeneral = _emailAccountRepository.Table.FirstOrDefault();
             if (eaGeneral == null)
                 throw new Exception("Default email account cannot be loaded");
+
             settingService.SaveSetting(new EmailAccountSettings
             {
                 DefaultEmailAccountId = eaGeneral.Id
