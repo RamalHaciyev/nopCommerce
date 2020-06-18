@@ -1,0 +1,10 @@
+﻿{
+  "SystemName": "BeautyStore",
+  "FriendlyName": "Beauty.az Default Theme",
+  "SupportRTL": false,
+  "PreviewImageUrl": "~/Themes/BeautyStore/preview.png",
+  "PreviewText": "The 'Beauty.az' beautiful theme",
+  "Author": "SmartStore AG",
+  "Author URI": "https://github.com/smartstoreag/SmartStoreNET",
+  "Developer": "Ramal Hacıyev"
+}
