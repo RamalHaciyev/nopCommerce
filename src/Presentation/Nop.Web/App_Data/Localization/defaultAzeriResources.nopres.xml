@@ -82,7 +82,7 @@
     <Value>Köhnə şifrə uyğun gəlmir</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.PasswordIsNotProvided">
-    <Value>Şifrə daxil deyilməyib</Value>
+    <Value>Şifrə daxil edilməyib</Value>
   </LocaleResource>
   <LocaleResource Name="Account.ChangePassword.Errors.PasswordMatchesWithPrevious">
     <Value>İstifadə etdiyiniz son şifrələrdən biri ilə eyni olan şifrəni daxil etdiniz. Zəhmət olmazsa yeni bir şifrə yaradın.</Value>

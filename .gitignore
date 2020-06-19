@@ -193,3 +193,5 @@ src/Presentation/Nop.Web/wwwroot/lib/cldr-data/main*
 !src/Presentation/Nop.Web/wwwroot/lib/cldr-data/main/main.zip
 src/packages/*
 /src/NopCommerce.favdoc
+/src/Frontend/HTML/node_modules/*
+src/Presentation/Nop.Web/Properties/launchSettings.json
