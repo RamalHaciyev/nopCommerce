@@ -195,3 +195,5 @@ src/packages/*
 /src/NopCommerce.favdoc
 /src/Frontend/HTML/node_modules/*
 src/Presentation/Nop.Web/Properties/launchSettings.json
+src/Presentation/Nop.Web/Properties/launchSettings.json
+src/Presentation/Nop.Web/web.config
